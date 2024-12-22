@@ -123,10 +123,8 @@
 
 // export default ImageCropper;
 
-import React from 'react';
-
-const hello = () => {
+const ImageCropper = () => {
   return <div></div>;
 };
 
-export default hello;
+export default ImageCropper;
