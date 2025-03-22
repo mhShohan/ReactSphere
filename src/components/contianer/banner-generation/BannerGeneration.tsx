@@ -1,23 +1,12 @@
 'use client';
+
 import { Button } from '@/components/ui/button';
-import {
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalOverlay,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Select,
-} from '@chakra-ui/react';
 import { useToJpeg } from '@hugocxl/react-to-image';
 import * as PhosphorIcons from '@phosphor-icons/react';
 import * as Icons from '@phosphor-icons/react/dist/ssr';
 import { CSSProperties, useEffect, useState } from 'react';
-import WebFont from 'webfontloader';
-import { useSectionBanner } from './Sections';
+import ColorSchemeSelection from './ColorSchemeSelection';
+import IconSelection from './IconSelection';
 
 const fontWeights = [
   { fontWeight: 400, type: 'light' },
@@ -54,7 +43,6 @@ const BannerGeneration = ({ isOpen, onClose, sectionName }: any) => {
   const [colorVariant, setColorVariant] = useState<'solid' | 'gradient'>('solid');
   const [selectedIcon, setSelectedIcon] = useState('Image');
   const [selectedColorScheme, setSelectedColorScheme] = useState('zinc');
-  const { setBase64Banner, setSelectedSectionBanner } = useSectionBanner();
 
   useEffect(() => {
     if (isOpen && sectionName) {
@@ -96,36 +84,31 @@ const BannerGeneration = ({ isOpen, onClose, sectionName }: any) => {
     purple: 'bg-gradient-to-r from-purple-100 to-green-200 text-violet-600',
   };
 
-  const colorOptions = colorVariant === 'solid' ? colorScheme : gradientColorSchema;
+  const colorOptions: any = colorVariant === 'solid' ? colorScheme : gradientColorSchema;
 
   const RenderSelectedIcon = (Icons as any)[selectedIcon];
 
   const [_, convertToSvg, _ref] = useToJpeg<HTMLDivElement>({
     quality: 1,
     selector: '#generate-banner',
-    onSuccess: (data) => {
-      setBase64Banner(data);
-      setSelectedSectionBanner();
+    onSuccess: (data: any) => {
+      console.log(data, 'generate-banner');
       onClose();
     },
   });
 
-  useEffect(() => {
-    WebFont.load({
-      google: {
-        families: fonts.map((font) => font.name),
-      },
-    });
-  }, []);
+  // useEffect(() => {
+  //   WebFont.load({
+  //     google: {
+  //       families: fonts.map((font) => font.name),
+  //     },
+  //   });
+  // }, []);
 
   return (
-    <Modal size='full' isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent className='relative p-6 rounded-2xl'>
-        <div className='absolute top-4 right-4'>
-          <ModalCloseButton size='lg' className='rounded-full' />
-        </div>
-        <ModalBody>
+    <>
+      <div className='relative p-6 rounded-2xl'>
+        <>
           <div className='flex mt-16'>
             <div className={`w-2/3`}>
               <div
@@ -187,7 +170,7 @@ const BannerGeneration = ({ isOpen, onClose, sectionName }: any) => {
             <div className='flex flex-col w-1/3 gap-4 p-8 mx-8 rounded-md shadow-2xl'>
               <div>
                 <label className='text-lg font-semibold'>Section name</label>
-                <Input
+                <input
                   placeholder='Section name'
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
@@ -196,7 +179,7 @@ const BannerGeneration = ({ isOpen, onClose, sectionName }: any) => {
               </div>
               <div>
                 <label className='text-lg font-semibold'>Typography</label>
-                <Select
+                <select
                   defaultValue='Urbanist'
                   onChange={(e) =>
                     setBannerStyles((prev) => ({
@@ -210,7 +193,7 @@ const BannerGeneration = ({ isOpen, onClose, sectionName }: any) => {
                       {font.name}
                     </option>
                   ))}
-                </Select>
+                </select>
               </div>
               <div>
                 <label className='text-lg font-semibold'>Font Weight</label>
@@ -252,126 +235,16 @@ const BannerGeneration = ({ isOpen, onClose, sectionName }: any) => {
                 Cancel
               </Button>
 
-              <Button variant='success' onClick={convertToSvg}>
+              <Button variant='secondary' onClick={convertToSvg}>
                 <PhosphorIcons.Checks size={16} color='white' className='mr-2' />
                 Generate and Apply
               </Button>
             </div>
           </div>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
+        </>
+      </div>
+    </>
   );
 };
 
 export default BannerGeneration;
-
-const IconSelection = ({ setSelectedIcon, selectedIcon }) => {
-  const [search, setSearch] = useState('');
-
-  const validIconNames = Object.keys(Icons).filter(
-    (key) => !['SSRBase', 'IconContext', 'SSR'].includes(key)
-  ) as (keyof typeof Icons)[];
-
-  const filteredIconNames = validIconNames.filter((iconName) =>
-    iconName?.toLowerCase().includes(search?.toLowerCase())
-  );
-
-  const RenderSelectedIcon = (Icons as any)[selectedIcon];
-
-  return (
-    <div className='relative'>
-      <label className='text-lg font-semibold'>Icon</label>
-
-      <Popover>
-        <PopoverTrigger>
-          <div className='flex items-center justify-between w-full p-2 border rounded'>
-            <div className='flex items-center gap-2'>
-              <RenderSelectedIcon size={24} />
-              <p>{selectedIcon}</p>
-            </div>
-            <PhosphorIcons.CaretDown size={22} />
-          </div>
-        </PopoverTrigger>
-        <PopoverContent width={472} sx={{ maxHeight: '200px', overflow: 'auto' }}>
-          <div className='flex flex-wrap m-4 justify-evenly'>
-            {filteredIconNames.map((icon, i) => (
-              <div
-                key={i}
-                onClick={() => setSelectedIcon(icon)}
-                className='p-2 rounded cursor-pointer hover:bg-slate-200'
-              >
-                <IconRender iconName={icon} />
-              </div>
-            ))}
-          </div>
-        </PopoverContent>
-      </Popover>
-    </div>
-  );
-};
-
-const ColorSchemeSelection = ({
-  options,
-  setSelectedColorScheme,
-  colorVariant,
-  setColorVariant,
-}) => {
-  return (
-    <div className='relative'>
-      <div className='flex items-center justify-between mb-2'>
-        <label className='text-lg font-semibold'>Color Scheme</label>
-        <div className='rounded-full bg-slate-200'>
-          <button
-            onClick={() => setColorVariant('solid')}
-            className={`p-1 w-24 font-semibold rounded-full ${
-              colorVariant === 'solid' && 'bg-secondary text-white'
-            }`}
-          >
-            Solid
-          </button>
-          <button
-            onClick={() => setColorVariant('gradient')}
-            className={`p-1 w-24 font-semibold rounded-full ${
-              colorVariant === 'gradient' && 'bg-secondary text-white'
-            }`}
-          >
-            Gradient
-          </button>
-        </div>
-      </div>
-      <div className='flex flex-wrap justify-around gap-2'>
-        {Object.keys(options).map((op) => (
-          <div
-            key={op}
-            onClick={() => setSelectedColorScheme(op)}
-            className={`w-14 h-14 rounded-full flex items-center justify-center cursor-pointer ${options[op]}`}
-          >
-            Aa
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-interface IconRenderProps {
-  iconName: any;
-  iconSize?: number;
-}
-
-const IconRender = ({ iconName, iconSize = 32 }: IconRenderProps) => {
-  const IconToRender = (PhosphorIcons as any)[iconName];
-
-  if (!IconToRender) {
-    return <span>No icon available</span>;
-  }
-
-  const IconComponent = IconToRender as React.ElementType;
-
-  return (
-    <>
-      <IconComponent size={iconSize} />
-    </>
-  );
-};
