@@ -1,12 +1,7 @@
 import { CaretDoubleLeft } from '@phosphor-icons/react';
-import { useNavigate } from 'react-router-dom';
 
 const NotFound = () => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate(-1);
-  };
+  const handleClick = () => {};
 
   return (
     <div className='flex justify-center bg-teal-700 items-center h-screen'>
