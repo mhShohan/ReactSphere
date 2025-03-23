@@ -29,15 +29,16 @@ import {
 // This is sample data.
 const data = {
   user: {
-    name: 'shadcn',
-    email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
+    name: 'mhShohan',
+    email: 'mehdihasanshohan25@gmail.com',
+    avatar:
+      'https://mhshohan.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofile-pic.5fdf5253.png&w=640&q=75',
   },
   teams: [
     {
-      name: 'Acme Inc',
+      name: 'ReactSphere',
       logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
+      plan: '',
     },
     {
       name: 'Acme Corp.',
