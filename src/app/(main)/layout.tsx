@@ -15,9 +15,9 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         </header>
 
         {/* Children */}
-        <div className='flex flex-1 flex-col gap-4 p-4 pt-0'>
+        <main className='p-4'>
           <div className='p-4'>{children}</div>
-        </div>
+        </main>
       </SidebarInset>
     </SidebarProvider>
   );
