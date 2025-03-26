@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Homepage() {
   return (
@@ -21,12 +22,14 @@ export default function Homepage() {
             reuse different React concepts in one place.
           </p>
         </div>
-        <Button
-          variant='secondary'
-          className='cursor-pointer flex items-center font-semibold rounded bg-blue-400 hover:bg-amber-100 hover:text-blue-600 w-46 gap-x-2 px-6'
-        >
-          Get Start <ArrowRight size={24} className='font-semibold' />
-        </Button>
+        <Link href='/profile' passHref>
+          <Button
+            variant='secondary'
+            className='cursor-pointer flex items-center font-semibold rounded bg-blue-400 hover:bg-amber-100 hover:text-blue-600 w-46 gap-x-2 px-6'
+          >
+            Get Start <ArrowRight size={24} className='font-semibold' />
+          </Button>
+        </Link>
       </div>
     </div>
   );
