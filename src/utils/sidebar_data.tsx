@@ -1,3 +1,4 @@
+import { Image } from '@phosphor-icons/react';
 import {
   AudioWaveform,
   BookOpen,
@@ -41,14 +42,21 @@ export const sidebar_data = {
       title: 'Profile Generator',
       url: '/profile',
       icon: User2,
-      isActive: true,
+      isActive: false,
+      items: [],
+    },
+    {
+      title: 'Banner Generation',
+      url: '/banner-generation',
+      icon: Image,
+      isActive: false,
       items: [],
     },
     {
       title: 'Drag & Drop',
       url: '#',
       icon: SquareTerminal,
-      isActive: true,
+      isActive: false,
       items: [
         {
           title: 'Vertical',

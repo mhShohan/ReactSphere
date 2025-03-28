@@ -107,9 +107,9 @@ const BannerGeneration = ({ isOpen, onClose, sectionName }: any) => {
 
   return (
     <>
-      <div className='relative p-6 rounded-2xl'>
+      <div className='relative '>
         <>
-          <div className='flex mt-16'>
+          <div className='flex'>
             <div className={`w-2/3`}>
               <div
                 id='generate-banner'
