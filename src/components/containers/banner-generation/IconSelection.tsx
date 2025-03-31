@@ -1,5 +1,6 @@
 'use client';
 
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import * as PhosphorIcons from '@phosphor-icons/react';
 import * as Icons from '@phosphor-icons/react/dist/ssr';
 import { useState } from 'react';
@@ -23,11 +24,11 @@ const IconSelection = ({ setSelectedIcon, selectedIcon }: IconSelectionProps) =>
   const RenderSelectedIcon = (Icons as any)[selectedIcon];
 
   return (
-    <div className='relative'>
+    <div className='flex flex-col mt-2'>
       <label className='text-lg font-semibold'>Icon</label>
 
-      <>
-        <>
+      <Popover>
+        <PopoverTrigger>
           <div className='flex items-center justify-between w-full p-2 border rounded'>
             <div className='flex items-center gap-2'>
               <RenderSelectedIcon size={24} />
@@ -35,21 +36,23 @@ const IconSelection = ({ setSelectedIcon, selectedIcon }: IconSelectionProps) =>
             </div>
             <PhosphorIcons.CaretDown size={22} />
           </div>
-        </>
-        <div style={{ maxHeight: '200px', overflow: 'auto' }}>
-          <div className='flex flex-wrap m-4 justify-evenly'>
-            {filteredIconNames.map((icon, i) => (
-              <div
-                key={i}
-                onClick={() => setSelectedIcon(icon)}
-                className='p-2 rounded cursor-pointer hover:bg-slate-200'
-              >
-                <IconRender iconName={icon} />
-              </div>
-            ))}
+        </PopoverTrigger>
+        <PopoverContent className='w-[450px]'>
+          <div className='h-56 overflow-y-auto'>
+            <div className='flex w-full flex-wrap justify-evenly'>
+              {filteredIconNames.map((icon, i) => (
+                <div
+                  key={i}
+                  onClick={() => setSelectedIcon(icon)}
+                  className='p-2 rounded cursor-pointer hover:bg-slate-200'
+                >
+                  <IconRender iconName={icon} />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </>
+        </PopoverContent>
+      </Popover>
     </div>
   );
 };

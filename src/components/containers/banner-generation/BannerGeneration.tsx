@@ -7,6 +7,14 @@ import * as Icons from '@phosphor-icons/react/dist/ssr';
 import { CSSProperties, useEffect, useState } from 'react';
 import ColorSchemeSelection from './ColorSchemeSelection';
 import IconSelection from './IconSelection';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 const fontWeights = [
   { fontWeight: 400, type: 'light' },
@@ -38,10 +46,10 @@ const BannerGeneration = ({ isOpen, onClose, sectionName }: any) => {
     fontWeight: 400,
     fontFamily: 'Urbanist',
   });
-  const [title, setTitle] = useState(sectionName ?? 'Section Name');
+  const [title, setTitle] = useState(sectionName ?? 'ReactSphere');
   const [iconSize, setIconSize] = useState(50);
   const [colorVariant, setColorVariant] = useState<'solid' | 'gradient'>('solid');
-  const [selectedIcon, setSelectedIcon] = useState('Image');
+  const [selectedIcon, setSelectedIcon] = useState('DiamondsFour');
   const [selectedColorScheme, setSelectedColorScheme] = useState('zinc');
 
   useEffect(() => {
@@ -109,127 +117,147 @@ const BannerGeneration = ({ isOpen, onClose, sectionName }: any) => {
     <>
       <div className='relative '>
         <>
-          <div className='flex'>
-            <div className={`w-2/3`}>
+          <div>
+            <div>
               <div
                 id='generate-banner'
-                className={`w-full h-[500px] gap-4 px-10 rounded flex items-center justify-center ${colorOptions[selectedColorScheme]}`}
+                className={`w-full h-[300px] gap-4 px-10 rounded flex items-center justify-center ${colorOptions[selectedColorScheme]}`}
               >
                 <RenderSelectedIcon size={iconSize} />
                 <h4 style={bannerStyles}>{title}</h4>
               </div>
-              <div className='flex items-center justify-between h-20 p-4 mt-2 rounded-md shadow-2xl'>
-                <div className='flex items-center gap-6 px-4 py-1 border rounded'>
-                  <label className='text-lg font-semibold'>Icon Size</label>
-                  <div className='flex items-center gap-2'>
-                    <button
-                      onClick={() => setIconSize((p) => p - 5)}
-                      className='flex items-center justify-center w-6 h-6 border rounded-full border-slate-500'
-                    >
-                      <PhosphorIcons.Minus size={14} />
-                    </button>
-                    <p>{iconSize}</p>
-                    <button
-                      onClick={() => setIconSize((p) => p + 5)}
-                      className='flex items-center justify-center w-6 h-6 border rounded-full border-slate-500'
-                    >
-                      <PhosphorIcons.Plus size={14} />
-                    </button>
+
+              <div className='flex gap-6 p-4 shadow-2xl'>
+                <div className='w-[36%]'>
+                  {/* Banner Title */}
+                  <div className='flex flex-col'>
+                    <label className='text-lg font-semibold'>Banner Title</label>
+                    <input
+                      placeholder='Section name'
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                      className='w-full py-1 px-2 border border-foreground/60 rounded outline-none focus:border-foreground/80'
+                      // onFocus={(e) => setTitle('')}
+                    />
                   </div>
-                </div>
-                <div className='flex items-center gap-6 px-4 py-1 border rounded'>
-                  <label className='text-lg font-semibold'>Font Size</label>
-                  <div className='flex items-center gap-2'>
-                    <button
-                      onClick={() =>
+
+                  <IconSelection selectedIcon={selectedIcon} setSelectedIcon={setSelectedIcon} />
+
+                  <div className='mt-2'>
+                    <label className='text-lg font-semibold'>Typography</label>
+                    <Select
+                      defaultValue='Urbanist'
+                      onValueChange={(value) =>
                         setBannerStyles((prev) => ({
                           ...prev,
-                          fontSize: (prev.fontSize as number) - 5,
+                          fontFamily: value,
                         }))
                       }
-                      className='flex items-center justify-center w-6 h-6 border rounded-full border-slate-500'
                     >
-                      <PhosphorIcons.Minus size={14} />
-                    </button>
-                    <p>{bannerStyles.fontSize}</p>
-                    <button
-                      onClick={() =>
-                        setBannerStyles((prev) => ({
-                          ...prev,
-                          fontSize: (prev.fontSize as number) + 5,
-                        }))
-                      }
-                      className='flex items-center justify-center w-6 h-6 border rounded-full border-slate-500'
-                    >
-                      <PhosphorIcons.Plus size={14} />
-                    </button>
+                      <SelectTrigger className='w-full'>
+                        <SelectValue placeholder='Select font Family' />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          {fonts.map((font) => (
+                            <SelectItem key={font.name} value={font.value}>
+                              {font.name}
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div className='flex flex-col w-1/3 gap-4 p-8 mx-8 rounded-md shadow-2xl'>
-              <div>
-                <label className='text-lg font-semibold'>Section name</label>
-                <input
-                  placeholder='Section name'
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  // onFocus={(e) => setTitle('')}
-                />
-              </div>
-              <div>
-                <label className='text-lg font-semibold'>Typography</label>
-                <select
-                  defaultValue='Urbanist'
-                  onChange={(e) =>
-                    setBannerStyles((prev) => ({
-                      ...prev,
-                      fontFamily: e.target.value,
-                    }))
-                  }
-                >
-                  {fonts.map((font) => (
-                    <option key={font.name} value={font.value}>
-                      {font.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className='text-lg font-semibold'>Font Weight</label>
-                <div className='flex gap-2'>
-                  {fontWeights.map((fw) => (
-                    <div
-                      key={fw.fontWeight}
-                      onClick={() =>
-                        setBannerStyles((prev) => ({
-                          ...prev,
-                          fontWeight: fw.fontWeight,
-                        }))
-                      }
-                      className={`w-full h-20 cursor-pointer text-slate-600 rounded border-2 flex flex-col justify-center items-center ${
-                        bannerStyles.fontWeight === fw.fontWeight
-                          ? 'border-green-400'
-                          : 'border-slate-200'
-                      }`}
-                    >
-                      <h4 className={`font-${fw.type}`}>Aa</h4>
-                      <p className={`font-${fw.type} -mt-2 text-sm capitalize`}>{fw.type}</p>
+
+                  <div className='flex items-center mt-4 rounded-md gap-4'>
+                    <div className='flex w-full items-center gap-6 px-4 py-1 border rounded'>
+                      <label className='text-lg font-semibold'>Icon Size</label>
+                      <div className='flex items-center gap-2'>
+                        <button
+                          onClick={() => setIconSize((p) => p - 5)}
+                          className='flex items-center justify-center w-6 h-6 border rounded-full border-slate-500'
+                        >
+                          <PhosphorIcons.Minus size={14} />
+                        </button>
+                        <p>{iconSize}</p>
+                        <button
+                          onClick={() => setIconSize((p) => p + 5)}
+                          className='flex items-center justify-center w-6 h-6 border rounded-full border-slate-500'
+                        >
+                          <PhosphorIcons.Plus size={14} />
+                        </button>
+                      </div>
                     </div>
-                  ))}
+
+                    <div className='flex w-full items-center gap-6 px-4 py-1 border rounded'>
+                      <label className='text-lg font-semibold'>Font Size</label>
+                      <div className='flex items-center gap-2'>
+                        <button
+                          onClick={() =>
+                            setBannerStyles((prev) => ({
+                              ...prev,
+                              fontSize: (prev.fontSize as number) - 5,
+                            }))
+                          }
+                          className='flex items-center justify-center w-6 h-6 border rounded-full border-slate-500'
+                        >
+                          <PhosphorIcons.Minus size={14} />
+                        </button>
+                        <p>{bannerStyles.fontSize}</p>
+                        <button
+                          onClick={() =>
+                            setBannerStyles((prev) => ({
+                              ...prev,
+                              fontSize: (prev.fontSize as number) + 5,
+                            }))
+                          }
+                          className='flex items-center justify-center w-6 h-6 border rounded-full border-slate-500'
+                        >
+                          <PhosphorIcons.Plus size={14} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='w-[64%]'>
+                  <div>
+                    <label className='text-lg font-semibold'>Font Weight</label>
+                    <div className='flex gap-2'>
+                      {fontWeights.map((fw) => (
+                        <div
+                          key={fw.fontWeight}
+                          onClick={() =>
+                            setBannerStyles((prev) => ({
+                              ...prev,
+                              fontWeight: fw.fontWeight,
+                            }))
+                          }
+                          className={`w-full h-12 cursor-pointer rounded border-2 flex flex-col justify-center items-center ${
+                            bannerStyles.fontWeight === fw.fontWeight
+                              ? 'border-green-400'
+                              : 'border-slate-200'
+                          }`}
+                        >
+                          <h4 className={`font-${fw.type}`}>Aa</h4>
+                          <p className={`font-${fw.type} -mt-2 text-sm capitalize`}>{fw.type}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <ColorSchemeSelection
+                    options={colorOptions}
+                    colorVariant={colorVariant}
+                    setColorVariant={setColorVariant}
+                    setSelectedColorScheme={setSelectedColorScheme}
+                  />
                 </div>
               </div>
-              <IconSelection selectedIcon={selectedIcon} setSelectedIcon={setSelectedIcon} />
-              <ColorSchemeSelection
-                options={colorOptions}
-                colorVariant={colorVariant}
-                setColorVariant={setColorVariant}
-                setSelectedColorScheme={setSelectedColorScheme}
-              />
             </div>
           </div>
 
-          <div className='flex items-center justify-end mt-4 mr-8'>
+          {/* <div className='flex items-center justify-end mt-4 mr-8'>
             <div className='flex items-center justify-end gap-2 mt-4'>
               <Button variant='secondary' onClick={onClose}>
                 Cancel
@@ -240,7 +268,7 @@ const BannerGeneration = ({ isOpen, onClose, sectionName }: any) => {
                 Generate and Apply
               </Button>
             </div>
-          </div>
+          </div> */}
         </>
       </div>
     </>

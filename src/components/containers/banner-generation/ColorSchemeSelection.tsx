@@ -12,14 +12,14 @@ const ColorSchemeSelection = ({
   setColorVariant,
 }: ColorSchemeSelectionProps) => {
   return (
-    <div className='relative'>
+    <div className='relative mt-4'>
       <div className='flex items-center justify-between mb-2'>
         <label className='text-lg font-semibold'>Color Scheme</label>
         <div className='rounded-full bg-slate-200'>
           <button
             onClick={() => setColorVariant('solid')}
             className={`p-1 w-24 font-semibold rounded-full ${
-              colorVariant === 'solid' && 'bg-secondary text-white'
+              colorVariant === 'solid' ? 'bg-teal-900 text-white' : 'text-teal-900'
             }`}
           >
             Solid
@@ -27,7 +27,7 @@ const ColorSchemeSelection = ({
           <button
             onClick={() => setColorVariant('gradient')}
             className={`p-1 w-24 font-semibold rounded-full ${
-              colorVariant === 'gradient' && 'bg-secondary text-white'
+              colorVariant === 'gradient' ? 'bg-teal-900 text-white' : 'text-teal-900'
             }`}
           >
             Gradient
@@ -39,7 +39,7 @@ const ColorSchemeSelection = ({
           <div
             key={op}
             onClick={() => setSelectedColorScheme(op)}
-            className={`w-14 h-14 rounded-full flex items-center justify-center cursor-pointer ${options[op]}`}
+            className={`w-12 h-12 rounded-full flex items-center justify-center cursor-pointer ${options[op]}`}
           >
             Aa
           </div>
