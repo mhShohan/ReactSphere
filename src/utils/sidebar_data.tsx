@@ -69,21 +69,17 @@ export const sidebar_data = {
       ],
     },
     {
-      title: 'Models',
+      title: 'Brain Games',
       url: '#',
       icon: Bot,
       items: [
         {
-          title: 'Genesis',
-          url: '#',
+          title: 'Schulte Table',
+          url: '/brain-games/schulte-table',
         },
         {
-          title: 'Explorer',
-          url: '#',
-        },
-        {
-          title: 'Quantum',
-          url: '#',
+          title: 'Color Game',
+          url: '/brain-games/color-game',
         },
       ],
     },
