@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Homepage() {
   return (
-    <div className='w-full h-screen flex flex-col items-center justify-center bg-[url(/assets/bg-3.jpg)] bg-cover'>
+    <div className='w-full h-screen flex flex-col items-center justify-center bg-[url(/assets/bg-2.jpg)] bg-cover'>
       <div className='flex flex-col items-center justify-center gap-y-4'>
         <h1 className='text-9xl font-extrabold'>
           <span className='text-blue-400'>React</span>
