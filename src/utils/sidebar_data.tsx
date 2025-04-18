@@ -9,8 +9,8 @@ import {
   Map,
   PieChart,
   Settings2,
-  SquareTerminal,
   User2,
+  Grip,
 } from 'lucide-react';
 
 export const sidebar_data = {
@@ -55,16 +55,20 @@ export const sidebar_data = {
     {
       title: 'Drag & Drop',
       url: '#',
-      icon: SquareTerminal,
+      icon: Grip,
       isActive: false,
       items: [
         {
           title: 'Vertical',
-          url: '/vertical',
+          url: '/dnd/vertical',
         },
         {
           title: 'Horizontal',
-          url: '/horizontal',
+          url: '/dnd/horizontal',
+        },
+        {
+          title: 'Kanban (Task Manager)',
+          url: '/dnd/kanban',
         },
       ],
     },
