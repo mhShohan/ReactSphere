@@ -22,6 +22,11 @@ import { type Task, TaskCard } from './TaskCard';
 import type { Column } from './BoardColumn';
 import { hasDraggableData } from './utils';
 import { coordinateGetter } from './multipleContainersKeyboardPreset';
+import dynamic from 'next/dynamic';
+
+const CreatePortal = dynamic(() => import('./CreatePortal'), {
+  ssr: false,
+});
 
 const defaultCols = [
   {
@@ -329,7 +334,9 @@ export function KanbanBoard() {
         </SortableContext>
       </BoardContainer>
 
-      {createPortal(
+      <CreatePortal activeColumn={activeColumn} tasks={tasks} activeTask={activeTask} />
+
+      {/* {createPortal(
         <DragOverlay>
           {activeColumn && (
             <BoardColumn
@@ -341,7 +348,7 @@ export function KanbanBoard() {
           {activeTask && <TaskCard task={activeTask} isOverlay />}
         </DragOverlay>,
         document.body
-      )}
+      )} */}
     </DndContext>
   );
 }
