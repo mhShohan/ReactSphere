@@ -88,51 +88,67 @@ export const sidebar_data = {
       ],
     },
     {
-      title: 'Documentation',
+      title: 'Data Visualization',
       url: '#',
       icon: BookOpen,
       items: [
         {
-          title: 'Introduction',
-          url: '#',
+          title: 'All Charts',
+          url: '/data-visualization/charts',
         },
         {
-          title: 'Get Started',
-          url: '#',
+          title: 'Vertical Chart',
+          url: '/data-visualization/vertical-chart',
+        },
+        // {
+        //   title: 'Horizontal Charts',
+        //   url: '/data-visualization/horizontal-chart',
+        // },
+        {
+          title: 'Line Chart',
+          url: '/data-visualization/line-chart',
         },
         {
-          title: 'Tutorials',
-          url: '#',
+          title: 'Pie Chart',
+          url: '/data-visualization/pie-chart',
         },
         {
-          title: 'Changelog',
-          url: '#',
+          title: 'Radar Chart',
+          url: '/data-visualization/radar-chart',
+        },
+        {
+          title: 'Doughnut Chart',
+          url: '/data-visualization/doughnut-chart',
+        },
+        {
+          title: 'Polar Area Chart',
+          url: '/data-visualization/polar-area-chart',
         },
       ],
     },
-    {
-      title: 'Settings',
-      url: '#',
-      icon: Settings2,
-      items: [
-        {
-          title: 'General',
-          url: '#',
-        },
-        {
-          title: 'Team',
-          url: '#',
-        },
-        {
-          title: 'Billing',
-          url: '#',
-        },
-        {
-          title: 'Limits',
-          url: '#',
-        },
-      ],
-    },
+    // {
+    //   title: 'Settings',
+    //   url: '#',
+    //   icon: Settings2,
+    //   items: [
+    //     {
+    //       title: 'General',
+    //       url: '#',
+    //     },
+    //     {
+    //       title: 'Team',
+    //       url: '#',
+    //     },
+    //     {
+    //       title: 'Billing',
+    //       url: '#',
+    //     },
+    //     {
+    //       title: 'Limits',
+    //       url: '#',
+    //     },
+    //   ],
+    // },
   ],
   projects: [
     {
