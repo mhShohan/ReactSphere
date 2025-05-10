@@ -17,7 +17,7 @@ import {
 } from 'chart.js';
 import { Line, Bar, Pie, Doughnut, PolarArea, Radar } from 'react-chartjs-2';
 import { borderColors, colors, SalesDataItem, sampleDatasets } from '@/utils/data';
-import { chartOptions } from './chartOptions';
+import { chartOptions, horizontalBarOptions } from './chartOptions';
 
 // Register ChartJS components
 ChartJS.register(
@@ -33,7 +33,7 @@ ChartJS.register(
   Legend
 );
 
-type ChartTypeOption = 'bar' | 'line' | 'pie' | 'doughnut' | 'polar' | 'radar';
+type ChartTypeOption = 'bar' | 'horizontal-bar' | 'line' | 'pie' | 'doughnut' | 'polar' | 'radar';
 
 const DataVisualization = ({ chartType }: { chartType: ChartTypeOption }) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([
@@ -98,6 +98,8 @@ const DataVisualization = ({ chartType }: { chartType: ChartTypeOption }) => {
         return <Line data={chartData as any} options={chartOptions} />;
       case 'bar':
         return <Bar data={chartData as any} options={chartOptions} />;
+      case 'horizontal-bar':
+        return <Bar data={chartData as any} options={horizontalBarOptions} />;
       case 'pie':
         return <Pie data={pieChartData as any} options={chartOptions} />;
       case 'doughnut':

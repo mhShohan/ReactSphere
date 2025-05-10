@@ -50,7 +50,8 @@ const AllChartsPage = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem value='bar'>Bar Chart</SelectItem>
+                  <SelectItem value='bar'>Vertical Chart</SelectItem>
+                  {/* <SelectItem value='horizontal-bar'>Horizontal Chart</SelectItem> */}
                   <SelectItem value='line'>Line Chart</SelectItem>
                   <SelectItem value='pie'>Pie Chart</SelectItem>
                   <SelectItem value='doughnut'>Doughnut Chart</SelectItem>
