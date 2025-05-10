@@ -97,42 +97,58 @@ export const sidebar_data = {
           url: '/data-visualization/charts',
         },
         {
-          title: 'Vertical Charts',
+          title: 'Vertical Chart',
           url: '/data-visualization/vertical-chart',
         },
+        // {
+        //   title: 'Horizontal Charts',
+        //   url: '/data-visualization/horizontal-chart',
+        // },
         {
-          title: 'Horizontal Charts',
-          url: '/data-visualization/horizontal-chart',
+          title: 'Line Chart',
+          url: '/data-visualization/line-chart',
         },
         {
-          title: 'Pie Charts',
+          title: 'Pie Chart',
           url: '/data-visualization/pie-chart',
         },
-      ],
-    },
-    {
-      title: 'Settings',
-      url: '#',
-      icon: Settings2,
-      items: [
         {
-          title: 'General',
-          url: '#',
+          title: 'Radar Chart',
+          url: '/data-visualization/radar-chart',
         },
         {
-          title: 'Team',
-          url: '#',
+          title: 'Doughnut Chart',
+          url: '/data-visualization/doughnut-chart',
         },
         {
-          title: 'Billing',
-          url: '#',
-        },
-        {
-          title: 'Limits',
-          url: '#',
+          title: 'Polar Area Chart',
+          url: '/data-visualization/polar-area-chart',
         },
       ],
     },
+    // {
+    //   title: 'Settings',
+    //   url: '#',
+    //   icon: Settings2,
+    //   items: [
+    //     {
+    //       title: 'General',
+    //       url: '#',
+    //     },
+    //     {
+    //       title: 'Team',
+    //       url: '#',
+    //     },
+    //     {
+    //       title: 'Billing',
+    //       url: '#',
+    //     },
+    //     {
+    //       title: 'Limits',
+    //       url: '#',
+    //     },
+    //   ],
+    // },
   ],
   projects: [
     {

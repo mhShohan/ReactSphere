@@ -67,7 +67,7 @@ const DataVisualization = ({ chartType }: { chartType: ChartTypeOption }) => {
           borderColor: borderColors[index % borderColors.length],
           borderWidth: 1,
           borderRadius: 4,
-          lineTension: 0.25,
+          lineTension: chartType === 'line' ? 0.25 : 0,
         };
       }),
   };
@@ -113,7 +113,11 @@ const DataVisualization = ({ chartType }: { chartType: ChartTypeOption }) => {
     }
   };
 
-  return <div className='p-4 border border-gray-200 rounded-lg shadow'>{renderChart()}</div>;
+  return (
+    <div className='p-4 border border-gray-200 rounded-lg shadow max-h-[600px] flex justify-center items-center'>
+      {renderChart()}
+    </div>
+  );
 };
 
 export default DataVisualization;
