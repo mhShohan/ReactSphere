@@ -88,25 +88,25 @@ export const sidebar_data = {
       ],
     },
     {
-      title: 'Documentation',
+      title: 'Data Visualization',
       url: '#',
       icon: BookOpen,
       items: [
         {
-          title: 'Introduction',
-          url: '#',
+          title: 'All Charts',
+          url: '/data-visualization/charts',
         },
         {
-          title: 'Get Started',
-          url: '#',
+          title: 'Vertical Charts',
+          url: '/data-visualization/vertical-chart',
         },
         {
-          title: 'Tutorials',
-          url: '#',
+          title: 'Horizontal Charts',
+          url: '/data-visualization/horizontal-chart',
         },
         {
-          title: 'Changelog',
-          url: '#',
+          title: 'Pie Charts',
+          url: '/data-visualization/pie-chart',
         },
       ],
     },
