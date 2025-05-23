@@ -1,3 +1,5 @@
+'use client';
+
 import ChartDataGenerator from '@/lib/ChartDataGenerator';
 import { IChartDataset } from '@/types';
 import {

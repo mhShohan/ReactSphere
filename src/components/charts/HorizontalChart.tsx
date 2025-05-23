@@ -1,25 +1,23 @@
 'use client';
 
-import { horizontalChartOptions } from './chartOptions';
-import { borderColors, colors } from '@/utils/data';
-import { useState } from 'react';
+import ChartDataGenerator from '@/lib/ChartDataGenerator';
+import { IChartDataset } from '@/types';
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
   ArcElement,
+  BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
   RadialLinearScale,
   Title,
   Tooltip,
-  Legend,
   type ChartData,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { IChartDataset } from '@/types';
-import ChartDataGenerator from '@/lib/ChartDataGenerator';
+import { horizontalChartOptions } from './chartOptions';
 
 ChartJS.register(
   CategoryScale,

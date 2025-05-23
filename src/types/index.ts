@@ -5,3 +5,13 @@ export interface IChartDataset {
 }
 
 export type TChartType = 'line' | 'bar' | 'radar' | 'pie' | 'doughnut' | 'polarArea';
+export type TChartTypeOption =
+  | 'vertical-bar'
+  | 'horizontal-bar'
+  | 'line'
+  | 'pie'
+  | 'doughnut'
+  | 'heatmap'
+  | 'stacked-list'
+  | 'polar'
+  | 'radar';
