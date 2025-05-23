@@ -100,10 +100,10 @@ export const sidebar_data = {
           title: 'Vertical Chart',
           url: '/data-visualization/vertical-chart',
         },
-        // {
-        //   title: 'Horizontal Charts',
-        //   url: '/data-visualization/horizontal-chart',
-        // },
+        {
+          title: 'Horizontal Charts',
+          url: '/data-visualization/horizontal-chart',
+        },
         {
           title: 'Line Chart',
           url: '/data-visualization/line-chart',
