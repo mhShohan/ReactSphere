@@ -36,6 +36,7 @@ export const verticalChartOptions: ChartOptions<'bar'> = {
       right: 40,
     },
   },
+  indexAxis: 'x',
   scales: {
     x: {
       ticks: {
@@ -156,7 +157,7 @@ export const verticalChartOptions: ChartOptions<'bar'> = {
     },
   },
   animation: {
-    duration: 0,
+    duration: 300,
   },
 };
 

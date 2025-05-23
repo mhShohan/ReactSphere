@@ -1,7 +1,8 @@
-import DataVisualization from '@/components/charts/DataVisualization';
+import VerticalChart from '@/components/charts/VerticalChart';
+import { sampleDatasets } from '@/utils/data';
 
 const VerticalChartPage = () => {
-  return <DataVisualization chartType='bar' />;
+  return <VerticalChart data={sampleDatasets.sales} />;
 };
 
 export default VerticalChartPage;

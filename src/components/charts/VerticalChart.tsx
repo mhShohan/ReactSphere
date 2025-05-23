@@ -1,6 +1,6 @@
 'use client';
 
-import { lineChartOptions } from './chartOptions';
+import { verticalChartOptions } from './chartOptions';
 import { borderColors, colors, IChartDataset } from '@/utils/data';
 import { useState } from 'react';
 import {
@@ -17,7 +17,7 @@ import {
   Legend,
   type ChartData,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(
   CategoryScale,
@@ -36,7 +36,7 @@ interface LineChartProps {
   data: IChartDataset[];
 }
 
-const LineChart = ({ data }: LineChartProps) => {
+const VerticalChart = ({ data }: LineChartProps) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([
     ...new Set(data.map((item) => item.category)),
   ]);
@@ -50,7 +50,7 @@ const LineChart = ({ data }: LineChartProps) => {
   // Filter data based on selected categories
   const filteredData = data.filter((item) => selectedCategories.includes(item.category));
 
-  const chartData: ChartData<'line'> = {
+  const chartData: ChartData<'bar'> = {
     labels: months,
     datasets: categories
       .filter((category) => selectedCategories.includes(category))
@@ -65,15 +65,16 @@ const LineChart = ({ data }: LineChartProps) => {
           borderColor: borderColors[index % borderColors.length],
           borderWidth: 1,
           borderRadius: 4,
+          // lineTension: 0.25,
         };
       }),
   };
 
   return (
     <div className='h-[500px] w-full border border-gray-200 rounded-xl py-5 bg-white'>
-      <Line data={chartData} options={lineChartOptions} />;
+      <Bar data={chartData} options={verticalChartOptions} />;
     </div>
   );
 };
 
-export default LineChart;
+export default VerticalChart;
