@@ -72,6 +72,8 @@ const DataVisualization = ({ chartType }: { chartType: ChartTypeOption }) => {
       }),
   };
 
+  console.log(chartData);
+
   // Prepare data for pie/doughnut/polar charts
   const pieChartData: ChartData<'pie' | 'doughnut' | 'polarArea'> = {
     labels: selectedCategories,

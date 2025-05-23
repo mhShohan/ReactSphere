@@ -26,6 +26,12 @@ export const borderColors = [
   'rgba(79, 90, 199, 1)',
 ];
 
+export interface IChartDataset {
+  month: string;
+  amount: number;
+  category: string;
+}
+
 export interface SalesDataItem {
   month: string;
   amount: number;
