@@ -1,7 +1,8 @@
-import DataVisualization from '@/components/charts/DataVisualization';
+import PieChart from '@/components/charts/PieChart';
+import { sampleDatasets } from '@/utils/data';
 
 const PieChartPage = () => {
-  return <DataVisualization chartType='pie' />;
+  return <PieChart data={sampleDatasets.sales} />;
 };
 
 export default PieChartPage;

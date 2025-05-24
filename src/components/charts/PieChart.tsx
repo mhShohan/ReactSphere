@@ -16,8 +16,8 @@ import {
   Tooltip,
   type ChartData,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import { verticalChartOptions } from './chartOptions';
+import { Pie } from 'react-chartjs-2';
+import { pieChartOptions } from './chartOptions';
 
 ChartJS.register(
   CategoryScale,
@@ -37,11 +37,11 @@ interface PieChartProps {
 }
 
 const PieChart = ({ data }: PieChartProps) => {
-  const chartData: ChartData<'bar'> = ChartDataGenerator.bar(data);
+  const chartData: ChartData<'pie'> = ChartDataGenerator.pie(data);
 
   return (
     <div className='h-[500px] w-full border border-gray-200 rounded-xl py-5 bg-white'>
-      <Bar data={chartData} options={verticalChartOptions} />;
+      <Pie data={chartData} options={pieChartOptions} />;
     </div>
   );
 };
