@@ -3,6 +3,9 @@ import { borderColors, colors } from '@/utils/data';
 // import { ChartData } from 'chart.js';
 
 class ChartDataGeneratorClass {
+  private colors = colors;
+  private borderColors = borderColors;
+
   private generate(data: IChartDataset[], chartType: TChartType) {
     const selectedCategories = [...new Set(data.map((item) => item.category))];
 
@@ -30,8 +33,8 @@ class ChartDataGeneratorClass {
                   );
                   return item ? item.amount : 0;
                 }),
-                backgroundColor: colors[index % colors.length],
-                borderColor: borderColors[index % borderColors.length],
+                backgroundColor: this.colors[index % colors.length],
+                borderColor: this.borderColors[index % borderColors.length],
                 borderWidth: 1,
                 borderRadius: 4,
               };
@@ -51,8 +54,8 @@ class ChartDataGeneratorClass {
                   );
                   return item ? item.amount : 0;
                 }),
-                backgroundColor: colors[index % colors.length],
-                borderColor: borderColors[index % borderColors.length],
+                backgroundColor: this.colors[index % colors.length],
+                borderColor: this.borderColors[index % borderColors.length],
                 borderWidth: 1,
                 borderRadius: 4,
               };
@@ -72,8 +75,8 @@ class ChartDataGeneratorClass {
                   );
                   return item ? item.amount : 0;
                 }),
-                backgroundColor: colors[index % colors.length],
-                borderColor: borderColors[index % borderColors.length],
+                backgroundColor: this.colors[index % colors.length],
+                borderColor: this.borderColors[index % borderColors.length],
                 borderWidth: 1,
                 borderRadius: 4,
               };
@@ -89,9 +92,11 @@ class ChartDataGeneratorClass {
                   .filter((item) => item.category === category)
                   .reduce((sum, item) => sum + item.amount, 0)
               ),
-              backgroundColor: selectedCategories.map((_, index) => colors[index % colors.length]),
+              backgroundColor: selectedCategories.map(
+                (_, index) => this.colors[index % colors.length]
+              ),
               borderColor: selectedCategories.map(
-                (_, index) => borderColors[index % borderColors.length]
+                (_, index) => this.borderColors[index % borderColors.length]
               ),
               borderWidth: 1,
             },
@@ -107,9 +112,11 @@ class ChartDataGeneratorClass {
                   .filter((item) => item.category === category)
                   .reduce((sum, item) => sum + item.amount, 0)
               ),
-              backgroundColor: selectedCategories.map((_, index) => colors[index % colors.length]),
+              backgroundColor: selectedCategories.map(
+                (_, index) => this.colors[index % colors.length]
+              ),
               borderColor: selectedCategories.map(
-                (_, index) => borderColors[index % borderColors.length]
+                (_, index) => this.borderColors[index % borderColors.length]
               ),
               borderWidth: 1,
             },
@@ -125,9 +132,11 @@ class ChartDataGeneratorClass {
                   .filter((item) => item.category === category)
                   .reduce((sum, item) => sum + item.amount, 0)
               ),
-              backgroundColor: selectedCategories.map((_, index) => colors[index % colors.length]),
+              backgroundColor: selectedCategories.map(
+                (_, index) => this.colors[index % colors.length]
+              ),
               borderColor: selectedCategories.map(
-                (_, index) => borderColors[index % borderColors.length]
+                (_, index) => this.borderColors[index % borderColors.length]
               ),
               borderWidth: 1,
             },
@@ -147,8 +156,8 @@ class ChartDataGeneratorClass {
                   );
                   return item ? item.amount : 0;
                 }),
-                backgroundColor: colors[index % colors.length],
-                borderColor: borderColors[index % borderColors.length],
+                backgroundColor: this.colors[index % colors.length],
+                borderColor: this.borderColors[index % borderColors.length],
                 borderWidth: 1,
                 borderRadius: 4,
               };
