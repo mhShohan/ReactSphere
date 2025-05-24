@@ -36,7 +36,7 @@ interface PieChartProps {
   data: IChartDataset[];
 }
 
-const PeiChart = ({ data }: PieChartProps) => {
+const PieChart = ({ data }: PieChartProps) => {
   const chartData: ChartData<'bar'> = ChartDataGenerator.bar(data);
 
   return (
@@ -46,4 +46,4 @@ const PeiChart = ({ data }: PieChartProps) => {
   );
 };
 
-export default PeiChart;
+export default PieChart;
