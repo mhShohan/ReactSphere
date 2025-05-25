@@ -1,5 +1,6 @@
 import { IChartDataset, TChartType } from '@/types';
 import { borderColors, colors } from '@/utils/data';
+import { ChartData } from 'chart.js';
 // import { ChartData } from 'chart.js';
 
 class ChartDataGeneratorClass {

@@ -16,8 +16,8 @@ import {
   Tooltip,
   type ChartData,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import { verticalChartOptions } from './chartOptions';
+import { Bar, Radar } from 'react-chartjs-2';
+import { radarChartOptions, verticalChartOptions } from './chartOptions';
 
 ChartJS.register(
   CategoryScale,
@@ -37,11 +37,11 @@ interface RadarChartProps {
 }
 
 const RadarChart = ({ data }: RadarChartProps) => {
-  const chartData: ChartData<'bar'> = ChartDataGenerator.bar(data);
+  const chartData: ChartData<'radar'> = ChartDataGenerator.radar(data);
 
   return (
     <div className='h-[500px] w-full border border-gray-200 rounded-xl py-5 bg-white'>
-      <Bar data={chartData} options={verticalChartOptions} />;
+      <Radar data={chartData} options={radarChartOptions} />;
     </div>
   );
 };

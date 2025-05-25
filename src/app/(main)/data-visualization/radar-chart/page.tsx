@@ -1,7 +1,8 @@
-import DataVisualization from '@/components/charts/DataVisualization';
+import RadarChart from '@/components/charts/RadarChart';
+import { sampleDatasets } from '@/utils/data';
 
 const RadarChartPage = () => {
-  return <DataVisualization chartType='radar' />;
+  return <RadarChart data={sampleDatasets.sales} />;
 };
 
 export default RadarChartPage;

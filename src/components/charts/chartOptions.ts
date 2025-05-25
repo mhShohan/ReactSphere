@@ -499,3 +499,82 @@ export const pieChartOptions: ChartOptions<'pie'> = {
     duration: 300,
   },
 };
+
+export const radarChartOptions: ChartOptions<'radar'> = {
+  layout: {
+    padding: {
+      top: 20,
+      right: 40,
+    },
+  },
+  responsive: true,
+  maintainAspectRatio: false,
+  elements: {
+    line: {
+      borderWidth: 3,
+    },
+  },
+  plugins: {
+    legend: {
+      display: true,
+      position: 'bottom',
+      labels: {
+        boxWidth: 16,
+        boxHeight: 16,
+        usePointStyle: true,
+        pointStyle: 'rectRounded',
+        useBorderRadius: false,
+      },
+    },
+    tooltip: {
+      titleColor: '#fff',
+      footerColor: '#fff',
+      titleAlign: 'center',
+      footerAlign: 'center',
+      bodyAlign: 'center',
+      boxWidth: 0,
+      boxHeight: 0,
+      displayColors: false,
+      callbacks: {
+        footer: (data) => {
+          const dataArr: number[] = (data[0]?.dataset?.data as number[]) || [];
+
+          const total = dataArr.reduce((acc: number, cur: number) => {
+            acc += cur;
+            return acc;
+          }, 0);
+
+          return `Total Sales: ${total}`;
+        },
+        label: (context) => {
+          const dataArr: number[] = (context?.dataset?.data as number[]) || [];
+          const value = dataArr[context.dataIndex];
+
+          const total = dataArr.reduce((acc: number, cur: number) => {
+            acc += cur;
+            return acc;
+          }, 0);
+
+          const percentage = (value / total) * 100;
+
+          return `${context.dataset.label}: ${value} (${percentage.toFixed(1)}%)`;
+        },
+        labelTextColor: function (context) {
+          return '#fff';
+        },
+      },
+      titleFont: {
+        family: 'roboto',
+      },
+      footerFont: {
+        family: 'roboto',
+      },
+      bodyFont: {
+        family: 'roboto',
+      },
+    },
+  },
+  animation: {
+    duration: 300,
+  },
+};
